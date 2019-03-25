@@ -1,0 +1,32 @@
+
+<!-- The Modal -->
+<div class="modal fade" id="myUnit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Crée Unite De Mesure</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-form-label col-4" for="referenceCat">Reference Unite Mesure</label>
+          <input class="form-control col-8" id="referenceCat" type="text" placeholder="Reference Unite" [(ngModel)]="unite.referenceUnit"/>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-4" for="libelleCat">Libelle Unite Mesure</label>
+          <input class="form-control col-8" id="libelleCat" type="text" placeholder="Unite Mesure"  [(ngModel)]="unite.nom"/>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <input type="button" class="btn btn-outline-info" value="Cree Unite" (click)="saveUnite()"/>
+      </div>
+
+    </div>
+  </div>
+</div>
