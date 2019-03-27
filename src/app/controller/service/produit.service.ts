@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Categorie} from "../model/categorie.model";
 import {UniteMesure} from "../model/unite-mesure.model";
-import {Commande} from "../../../../../commande-v6/src/app/controller/model/commande.model";
+
 
 @Injectable({
   providedIn: 'root'

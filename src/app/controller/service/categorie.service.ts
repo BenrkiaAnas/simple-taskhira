@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Categorie} from "../model/categorie.model";
+import {Categorie} from '../model/categorie.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import {Categorie} from "../model/categorie.model";
 export class CategorieService {
   private _url:string = "http://localhost:8082/categorie-api/categories/";
   private _url_cat = "http://localhost:8082/categorie-api/categories/creeCategorie";
-  private _categorieCreate:Categorie = new Categorie('','');
+  private _categorieCreate: Categorie = new Categorie('','');
 
   constructor(private http:HttpClient) { }
 

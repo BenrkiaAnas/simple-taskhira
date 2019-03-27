@@ -18,7 +18,6 @@ export class CategorieCreateComponent implements OnInit {
     return this.categorieService.categorieCreate;
   }
   public saveCategorie(){
-    console.log(this.categorieService.categorieCreate);
     this.categorieService.saveCategorie();
   }
 
