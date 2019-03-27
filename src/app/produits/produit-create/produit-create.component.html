@@ -13,38 +13,39 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class="form-group row">
-          <label class="col-form-label col-4" for="reference">Reference Produit</label>
-          <input class="form-control col-8" id="reference" type="text" placeholder="Reference Produit" />
+          <label class="col-form-label col-4" for="reference" >Reference Produit</label>
+          <input class="form-control col-8" id="reference" type="text" placeholder="Reference Produit" [(ngModel)]="produits.referenceProduit"/>
         </div>
         <div class="form-group row">
-          <label class="col-form-label col-4" for="libelle">Libelle Produit</label>
-          <input class="form-control col-8" id="libelle" type="text" placeholder="Libelle Produit" />
+          <label class="col-form-label col-4" for="libelle" >Libelle Produit</label>
+          <input class="form-control col-8" id="libelle" type="text" placeholder="Libelle Produit" [(ngModel)]="produits.libelle"/>
         </div>
         <div class="form-group row">
           <label class="col-form-label col-4" for="qte">Quantite Stock Produit</label>
-          <input class="form-control col-8" id="qte" type="number" placeholder="Quantite Stock Produit" />
+          <input class="form-control col-8" id="qte" type="number" placeholder="Quantite Stock Produit" [(ngModel)]="produits.qteStock"/>
         </div>
         <div class="form-group row">
           <label class="col-form-label col-4" for="categorie">Categorie</label>
-          <select class="form-control col-8" id="categorie" >
-            <option *ngFor="let cat2 of categories" value="{{cat2.referenceCategorie}}">{{cat2.libelle}}</option>
+          <select class="form-control col-8" id="categorie" [(ngModel)]="produits.categorieVo.referenceCategorie">
+            <option *ngFor="let cat2 of categories" value="{{cat2.referenceCategorie}}" >{{cat2.libelle}}</option>
           </select>
         </div>
         <div class="form-group row">
           <label class="col-form-label col-4" for="unite">Unite Mesure</label>
-          <select class="form-control col-8" id="unite" >
+          <select class="form-control col-8" id="unite" [(ngModel)]="produits.uniteMesureVo.referenceUnit">
             <option *ngFor="let unit1 of unites" value="{{unit1.referenceUnit}}">{{unit1.nom}}</option>
           </select>
         </div>
         <div class="form-group row">
-          <label class="col-form-label col-4" for="image">Image Produit</label>
-          <input class="form-control-file col-8" id="image" type="file" placeholder="Selectioner Une Image" />
+          <label class="col-form-label col-4" for="picture">Photo de Produit</label>
+          <input class="form-control-file col-8" id="picture" type="file" [(ngModel)]="produits.image"/>
         </div>
+
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <input type="button" class="btn btn-outline-info" value="Cree Produit"/>
+        <button  class="btn btn-outline-info" (click)="saveProduit()">Cree Produit</button>
       </div>
 
     </div>

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Categorie} from "../model/categorie.model";
-import {UniteMesure} from "../model/unite-mesure.model";
-import {Commande} from "../../../../../commande-v6/src/app/controller/model/commande.model";
+import {HttpClient} from '@angular/common/http';
+import {Categorie} from '../model/categorie.model';
+import {UniteMesure} from '../model/unite-mesure.model';
+import {Produit} from '../model/produit.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
-  private _url_prd = "http://localhost:8082/produit-api/produits/creeProduit";
+  private _url_pd = "http://localhost:8082/produit-apis/produits/";
   private _url_cat = "http://localhost:8082/categorie-api/categories/all";
   private _url_unit = "http://localhost:8082/unite-api/unites/all";
   private _categories:Array<Categorie>;
   private _unites:Array<UniteMesure>;
+  private _produiCreate:Produit = new Produit('','',0,'');
 
   constructor(private _http:HttpClient) { }
   /*public allCategorie(referenceCategorie1:string):Array<Categorie>{
@@ -42,15 +43,28 @@ export class ProduitService {
     );
     return this._unites;
   }*/
+  public saveProduit(){
+    console.log("Cree Produit");
+    console.log(this._produiCreate);
+    this._http.post<Produit>(this._url_pd,this._produiCreate).subscribe(
+      data=>{
+        this._produiCreate = new Produit('','',0,'');
+        console.log("Ajoute avec success");
+      },error1 => {
 
+        console.log("error");
+      }
+    );
 
-
-  get url_prd(): string {
-    return this._url_prd;
   }
 
-  set url_prd(value: string) {
-    this._url_prd = value;
+
+  get url_pd(): string {
+    return this._url_pd;
+  }
+
+  set url_pd(value: string) {
+    this._url_pd = value;
   }
 
   get url_cat(): string {
@@ -111,5 +125,13 @@ export class ProduitService {
 
   set http(value: HttpClient) {
     this._http = value;
+  }
+
+  get produiCreate(): Produit {
+    return this._produiCreate;
+  }
+
+  set produiCreate(value: Produit) {
+    this._produiCreate = value;
   }
 }

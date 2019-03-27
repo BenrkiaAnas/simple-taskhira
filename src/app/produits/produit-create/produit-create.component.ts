@@ -23,6 +23,13 @@ export class ProduitCreateComponent implements OnInit {
   {
     return this.produitService.unites;
   }
+  public saveProduit()
+  {
+     this.produitService.saveProduit();
+  }
+  public get produits(){
+    return this.produitService.produiCreate;
+  }
 
 
 }
