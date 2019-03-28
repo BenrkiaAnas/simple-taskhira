@@ -1,7 +1,11 @@
-.row
+.tab-pane
 {
-  margin-left: 0;
-  margin-right: 0;
-  padding: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.nav-item
+{
+  width: 33.3333%
 }
 

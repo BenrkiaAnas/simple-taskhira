@@ -8,7 +8,10 @@ import {UniteMesure} from "../model/unite-mesure.model";
 export class UniteMesureService {
   private _url:string = "http://localhost:8082/categorie-api/categories/";
   private _url_unit = "http://localhost:8082/unite-api/unites/creeUnite";
+  private _url_unit_find = "http://localhost:8082/unite-api/unites/all";
+  private _url_unit_del = "http://localhost:8082/unite-api/unites/delete/";
   private _uniteMesureCreate:UniteMesure = new UniteMesure('','');
+  private _unites:Array<UniteMesure>;
 
   constructor(private http:HttpClient) { }
   public saveUnite(){
@@ -21,6 +24,56 @@ export class UniteMesureService {
         console.log("erreur");
       }
     );
+  }
+  public findAll()
+  {
+    if(this._unites == null)
+    {
+      this.http.get<Array<UniteMesure>>(this._url_unit_find).subscribe(
+        data=>{
+          this._unites=data;
+        },error =>{
+          console.log("error while loading Unite Mesure ...");
+        }
+      );
+    }
+  }
+  public deleteUnit(referenceUnit:String)
+  {
+    this.http.delete<UniteMesure>(this._url_unit_del+referenceUnit).subscribe(
+      data=>{
+        console.log("ok");
+      },error1 => {
+        console.log("Error");
+      }
+    );
+  }
+
+
+  get url_unit_find(): string {
+    return this._url_unit_find;
+  }
+
+  set url_unit_find(value: string) {
+    this._url_unit_find = value;
+  }
+
+  get unites(): Array<UniteMesure> {
+    if(this._unites == null)
+    {
+      this.http.get<Array<UniteMesure>>(this._url_unit_find).subscribe(
+        data=>{
+          this._unites=data;
+        },error =>{
+          console.log("error while loading Unite Mesure ...");
+        }
+      );
+    }
+    return this._unites;
+  }
+
+  set unites(value: Array<UniteMesure>) {
+    this._unites = value;
   }
 
   get url(): string {
@@ -45,5 +98,13 @@ export class UniteMesureService {
 
   set uniteMesureCreate(value: UniteMesure) {
     this._uniteMesureCreate = value;
+  }
+
+  get url_unit_del(): string {
+    return this._url_unit_del;
+  }
+
+  set url_unit_del(value: string) {
+    this._url_unit_del = value;
   }
 }

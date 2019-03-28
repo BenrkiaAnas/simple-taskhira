@@ -8,7 +8,7 @@ import { CategorieCreateComponent } from './produits/categorie-create/categorie-
 import { ProduitCreateComponent } from './produits/produit-create/produit-create.component';
 import { UniteMesureCreateComponent } from './produits/unite-mesure-create/unite-mesure-create.component';
 import { HeaderComponent } from './header/header.component';
-import { TaskhiraComponent } from './taskhira/taskhira.component';
+import { TaskhiraComponent } from './allcreation/taskhira.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 

@@ -1,54 +1,64 @@
 
-<!-- The Modal -->
-<div class="modal fade" id="myProduit">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Crée Produit</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="reference" >Reference Produit</label>
-          <input class="form-control col-8" id="reference" type="text" placeholder="Reference Produit" [(ngModel)]="produits.referenceProduit"/>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="libelle" >Libelle Produit</label>
-          <input class="form-control col-8" id="libelle" type="text" placeholder="Libelle Produit" [(ngModel)]="produits.libelle"/>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="qte">Quantite Stock Produit</label>
-          <input class="form-control col-8" id="qte" type="number" placeholder="Quantite Stock Produit" [(ngModel)]="produits.qteStock"/>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="categorie">Categorie</label>
-          <select class="form-control col-8" id="categorie" [(ngModel)]="produits.categorieVo.referenceCategorie">
-            <option *ngFor="let cat2 of categories" value="{{cat2.referenceCategorie}}" >{{cat2.libelle}}</option>
-          </select>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="unite">Unite Mesure</label>
-          <select class="form-control col-8" id="unite" [(ngModel)]="produits.uniteMesureVo.referenceUnit">
-            <option *ngFor="let unit1 of unites" value="{{unit1.referenceUnit}}">{{unit1.nom}}</option>
-          </select>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="picture">Photo de Produit</label>
-          <input class="form-control-file col-8" id="picture" type="file" [(ngModel)]="produits.image"/>
-        </div>
-
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button  class="btn btn-outline-info" (click)="saveProduit()">Cree Produit</button>
-      </div>
-
+<div class="row">
+  <div class="col-6">
+    <h4>Crée Produit</h4>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="reference" >Reference Produit</label>
+      <input class="form-control col-8" id="reference" type="text" placeholder="Reference Produit" [(ngModel)]="produits.referenceProduit"/>
     </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="libelle" >Libelle Produit</label>
+      <input class="form-control col-8" id="libelle" type="text" placeholder="Libelle Produit" [(ngModel)]="produits.libelle"/>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="qte">Quantite Stock Produit</label>
+      <input class="form-control col-8" id="qte" type="number" placeholder="Quantite Stock Produit" [(ngModel)]="produits.qteStock"/>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="categorie">Categorie</label>
+      <select class="form-control col-8" id="categorie" [(ngModel)]="produits.categorieVo.referenceCategorie">
+        <option *ngFor="let cat2 of categories" value="{{cat2.referenceCategorie}}" >{{cat2.libelle}}</option>
+      </select>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="unite">Unite Mesure</label>
+      <select class="form-control col-8" id="unite" [(ngModel)]="produits.uniteMesureVo.referenceUnit">
+        <option *ngFor="let unit1 of unites" value="{{unit1.referenceUnit}}">{{unit1.nom}}</option>
+      </select>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="picture">Photo de Produit</label>
+      <input class="form-control-file col-8" id="picture" type="file" [(ngModel)]="produits.image"/>
+    </div>
+    <div class="form-group">
+      <button  class="btn btn-outline-info" (click)="saveProduit()">Cree Produit</button>
+    </div>
+
+  </div>
+  <div class="col-6">
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Libelle</th>
+        <th>Quantite</th>
+        <th>Unite Mesure</th>
+        <th>Categorie</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let prd of produitsAll">
+        <td>{{prd.referenceProduit}}</td>
+        <td>{{prd.libelle}}</td>
+        <td>{{prd.qteStock}}</td>
+        <td>{{prd.categorieVo.referenceCategorie}}</td>
+        <td>{{prd.uniteMesureVo.referenceUnit}}</td>
+        <td><button class="btn btn-outline-danger" (click)="deleteProduit(prd)"><i class="fa fa-database"></i></button></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
 

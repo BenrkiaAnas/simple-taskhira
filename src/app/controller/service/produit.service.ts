@@ -11,9 +11,12 @@ export class ProduitService {
   private _url_pd = "http://localhost:8082/produit-apis/produits/";
   private _url_cat = "http://localhost:8082/categorie-api/categories/all";
   private _url_unit = "http://localhost:8082/unite-api/unites/all";
+  private _url_pd_find = "http://localhost:8082/produit-apis/produits/all";
+  private _url_pd_del = "http://localhost:8082/produit-apis/produits/delete/";
   private _categories:Array<Categorie>;
   private _unites:Array<UniteMesure>;
   private _produiCreate:Produit = new Produit('','',0,'');
+  private _produits:Array<Produit>;
 
   constructor(private _http:HttpClient) { }
   /*public allCategorie(referenceCategorie1:string):Array<Categorie>{
@@ -57,7 +60,57 @@ export class ProduitService {
     );
 
   }
+  public findAll()
+  {
+    if(this._produits == null)
+    {
+      this._http.get<Array<Produit>>(this._url_pd_find).subscribe(
+        data=>{
+          this._produits = data;
+        },error1 => {
+          console.log("Errrrrooooooooooooooooor");
+        }
+      );
+    }
+  }
+  public deletePro(referenceProduit:String)
+  {
+    this._http.delete<Produit>(this._url_pd_del+referenceProduit).subscribe(
+      data=>
+      {
+        console.log("ok");
+      },error1 => {
+        console.log("Error");
+      }
+    );
+  }
 
+
+  get url_pd_find(): string {
+    return this._url_pd_find;
+  }
+
+  set url_pd_find(value: string) {
+    this._url_pd_find = value;
+  }
+
+  get produits(): Array<Produit> {
+    if(this._produits == null)
+    {
+      this._http.get<Array<Produit>>(this._url_pd_find).subscribe(
+        data=>{
+          this._produits = data;
+        },error1 => {
+          console.log("Errrrrooooooooooooooooor");
+        }
+      );
+    }
+    return this._produits;
+  }
+
+  set produits(value: Array<Produit>) {
+    this._produits = value;
+  }
 
   get url_pd(): string {
     return this._url_pd;

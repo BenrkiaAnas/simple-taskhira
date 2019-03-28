@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {TaskhiraComponent} from "./taskhira/taskhira.component";
+import {TaskhiraComponent} from "./allcreation/taskhira.component";
 import {ProduitsComponent} from "./produits/produits.component";
 
 const routes: Routes = [

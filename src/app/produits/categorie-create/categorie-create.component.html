@@ -1,33 +1,37 @@
 
-<!-- The Modal -->
-<div class="modal fade" id="myCategorie">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Crée Categorie</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="referenceCat">Reference Categorie</label>
-          <input class="form-control col-8" id="referenceCat" type="text" placeholder="Reference Categorie" [(ngModel)]="categorieCreate.referenceCategorie"/>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-4" for="libelleCat">Libelle Categorie</label>
-          <input class="form-control col-8" id="libelleCat" type="text" placeholder="Libelle Categorie" [(ngModel)]="categorieCreate.libelle"/>
-        </div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button class="btn btn-outline-info"  (click)="saveCategorie()">Cree Categorie</button>
-      </div>
-
+<div class="row">
+  <div class="col-6">
+    <h4>Crée Categorie</h4>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="referenceCat">Reference Categorie</label>
+      <input class="form-control col-8" id="referenceCat" type="text" placeholder="Reference Categorie" [(ngModel)]="categorieCreate.referenceCategorie"/>
     </div>
+    <div class="form-group row">
+      <label class="col-form-label col-4" for="libelleCat">Libelle Categorie</label>
+      <input class="form-control col-8" id="libelleCat" type="text" placeholder="Libelle Categorie" [(ngModel)]="categorieCreate.libelle"/>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-outline-info"  (click)="saveCategorie()">Cree Categorie</button>
+    </div>
+
+  </div>
+  <div class="col-6">
+    <table class="table table-hover table-sm">
+      <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Libelle</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of categories">
+        <td>{{c.referenceCategorie}}</td>
+        <td>{{c.libelle}}</td>
+        <td><button class="btn btn-outline-danger" (click)="deleteCat(c)"><i class="fa fa-database"></i></button></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
