@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import "bootstrap";
 import * as $ from 'jquery';
+import "hover.css";
 
 @Component({
   selector: 'app-header',

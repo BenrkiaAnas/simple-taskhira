@@ -3,6 +3,7 @@ import "bootstrap";
 import {CategorieService} from "../../controller/service/categorie.service";
 import "bootstrap";
 import {Categorie} from '../../controller/model/categorie.model';
+import "hover.css";
 @Component({
   selector: 'app-categorie-create',
   templateUrl: './categorie-create.component.html',

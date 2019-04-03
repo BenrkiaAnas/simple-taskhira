@@ -4,7 +4,7 @@ import {ProduitService} from "../../controller/service/produit.service";
 import {Categorie} from "../../controller/model/categorie.model";
 import {UniteMesure} from "../../controller/model/unite-mesure.model";
 import {Produit} from '../../controller/model/produit.model';
-
+import "hover.css";
 @Component({
   selector: 'app-produit-create',
   templateUrl: './produit-create.component.html',

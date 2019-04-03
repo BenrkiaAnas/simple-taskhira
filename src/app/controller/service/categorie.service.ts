@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Categorie} from "../model/categorie.model";
 import Swal from 'sweetalert2';
+import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,7 @@ export class CategorieService {
     if(this._categories == null)
     {
       this._http.get<Array<Categorie>>(this._url_cat_find).subscribe(
+
         data=>{
           this._categories = data;
         },error=>{
@@ -39,15 +41,9 @@ export class CategorieService {
       );
     }
   }
-  public deleteCat(referenceCategorie:String)
+  public deleteCat(referenceCategorie:String):Observable<Categorie[]>
   {
-    this._http.delete<Categorie>(this._url_cat_del+referenceCategorie).subscribe(
-      data=>{
-        console.log("ok");
-      },error1 => {
-        console.log("Error");
-      }
-    );
+    return this._http.delete<Categorie[]>(this._url_cat_del+referenceCategorie);
   }
 
   get url(): string {

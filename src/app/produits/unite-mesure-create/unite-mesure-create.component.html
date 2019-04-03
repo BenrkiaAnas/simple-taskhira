@@ -10,7 +10,7 @@
       <input class="form-control col-8" id="libelleCat" type="text" placeholder="Unite Mesure"  [(ngModel)]="unite.nom"/>
     </div>
     <div class="form-group">
-      <input type="button" class="btn btn-outline-info" value="Cree Unite" (click)="saveUnite()"/>
+      <input type="button" class="btn btn-outline-info hvr-wobble-vertical" value="Cree Unite" (click)="saveUnite()"/>
     </div>
 
   </div>
@@ -27,7 +27,7 @@
       <tr *ngFor="let unt of unites">
         <td>{{unt.referenceUnit}}</td>
         <td>{{unt.nom}}</td>
-        <td><button class="btn btn-outline-danger" (click)="deleteUnit(unt)"><i class="fa fa-database"></i></button></td>
+        <td><button class="btn btn-outline-danger hvr-buzz-out" (click)="deleteUnit(unt)"><i class="fa fa-database"></i></button></td>
         <td></td>
       </tr>
       </tbody>

@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { TaskhiraComponent } from './allcreation/taskhira.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ProduitMarcheComponent } from './produit-marche/produit-marche.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     ProduitCreateComponent,
     UniteMesureCreateComponent,
     HeaderComponent,
-    TaskhiraComponent
+    TaskhiraComponent,
+    ProduitMarcheComponent
   ],
   imports: [
     BrowserModule,

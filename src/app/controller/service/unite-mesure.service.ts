@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UniteMesure} from "../model/unite-mesure.model";
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +39,10 @@ export class UniteMesureService {
       );
     }
   }
-  public deleteUnit(referenceUnit:String)
+  public deleteUnit(referenceUnit:String):Observable<UniteMesure[]>
   {
-    this.http.delete<UniteMesure>(this._url_unit_del+referenceUnit).subscribe(
-      data=>{
-        console.log("ok");
-      },error1 => {
-        console.log("Error");
-      }
-    );
+    return this.http.delete<UniteMesure[]>(this._url_unit_del+referenceUnit);
+
   }
 
 

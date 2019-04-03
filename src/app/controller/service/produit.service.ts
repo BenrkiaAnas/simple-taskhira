@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Categorie} from '../model/categorie.model';
 import {UniteMesure} from '../model/unite-mesure.model';
 import {Produit} from '../model/produit.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProduitService {
   private _url_pd = "http://localhost:8082/produit-apis/produits/";
   private _url_cat = "http://localhost:8082/categorie-api/categories/all";
   private _url_unit = "http://localhost:8082/unite-api/unites/all";
-  private _url_pd_find = "http://localhost:8082/produit-apis/produits/all";
+  private _url_pd_all = "http://localhost:8082/produit-apis/produits/";
   private _url_pd_del = "http://localhost:8082/produit-apis/produits/delete/";
   private _categories:Array<Categorie>;
   private _unites:Array<UniteMesure>;
@@ -64,7 +65,7 @@ export class ProduitService {
   {
     if(this._produits == null)
     {
-      this._http.get<Array<Produit>>(this._url_pd_find).subscribe(
+      this._http.get<Array<Produit>>(this._url_pd_all).subscribe(
         data=>{
           this._produits = data;
         },error1 => {
@@ -73,31 +74,33 @@ export class ProduitService {
       );
     }
   }
-  public deletePro(referenceProduit:String)
+  public deletePro(referenceProduit:String):Observable<Produit[]>
   {
-    this._http.delete<Produit>(this._url_pd_del+referenceProduit).subscribe(
-      data=>
-      {
-        console.log("ok");
-      },error1 => {
-        console.log("Error");
-      }
-    );
+
+    return this._http.delete<Produit[]>(this._url_pd_del+referenceProduit);
   }
 
 
-  get url_pd_find(): string {
-    return this._url_pd_find;
+  get url_pd_all(): string {
+    return this._url_pd_all;
   }
 
-  set url_pd_find(value: string) {
-    this._url_pd_find = value;
+  set url_pd_all(value: string) {
+    this._url_pd_all = value;
+  }
+
+  get url_pd_del(): string {
+    return this._url_pd_del;
+  }
+
+  set url_pd_del(value: string) {
+    this._url_pd_del = value;
   }
 
   get produits(): Array<Produit> {
     if(this._produits == null)
     {
-      this._http.get<Array<Produit>>(this._url_pd_find).subscribe(
+      this._http.get<Array<Produit>>(this._url_pd_all).subscribe(
         data=>{
           this._produits = data;
         },error1 => {
