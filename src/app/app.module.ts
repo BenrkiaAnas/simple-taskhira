@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { TaskhiraComponent } from './allcreation/taskhira.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { ProduitMarcheComponent } from './produit-marche/produit-marche.component';
+import { ProduitMarcheComponent } from './produits/produit-marche/produit-marche.component';
 
 @NgModule({
   declarations: [
